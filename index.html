@@ -24,21 +24,19 @@
         <tbody>
           <tr v-for="tarea in tareas">
             <td>
-              <input type="checkbox">
+              <input type="checkbox" v-model="tarea.done">
             </td>
             <td>
               {{ tarea.title }}
             </td>
             <td>
-              <button class="btn btn-danger">Eliminar</button>
+              <button v-on:click="deleteTask(tarea)" class="btn btn-danger">Eliminar</button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-  
-
 
   <!-- Vue js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
@@ -54,17 +52,28 @@
           },
           {
             title: 'task2',
-            done: true
+            done: false
           },
           {
             title: 'task3',
-            done: true
+            done: false
           },
           {
             title: 'task4',
             done: true
           }
         ]
+      },
+      methods: {
+        deleteTask(task) {
+          // console.log(task)
+          // para saber el indice de la tarea a eliminar
+          // console.log(this.tareas.indexOf(task));
+
+          indiceEliminar = this.tareas.indexOf(task)
+          // eliminar tarea del array
+          this.tareas.splice(indiceEliminar, 1)
+        }
       }
     })
   </script>
