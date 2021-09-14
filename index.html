@@ -10,18 +10,61 @@
 </head>
 <body>
   <!-- Vue js component -->
-  <div id="taskApp">
-    <h1>{{ nameApp }}</h1>
-    
+  <div class="container">
+    <div id="taskApp" class="col-sm-8 col-sm-offset-2">
+      <h1>{{ nameApp }}</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Hecho</th>
+            <th>Tarea</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="tarea in tareas">
+            <td>
+              <input type="checkbox">
+            </td>
+            <td>
+              {{ tarea.title }}
+            </td>
+            <td>
+              <button class="btn btn-danger">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
   
+
+
   <!-- Vue js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
   <script>
     new Vue({
       el: '#taskApp',
       data: {
-        nameApp: 'Vue task app'
+        nameApp: 'Vue task app',
+        tareas: [
+          {
+            title: 'task1',
+            done: true
+          },
+          {
+            title: 'task2',
+            done: true
+          },
+          {
+            title: 'task3',
+            done: true
+          },
+          {
+            title: 'task4',
+            done: true
+          }
+        ]
       }
     })
   </script>
